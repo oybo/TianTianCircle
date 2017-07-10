@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="1.5dp"
+    android:clickable="true"
+    android:elevation="5dp"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    app:cardCornerRadius="1dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_imageview_cover_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bg_video_default"/>
+
+        <com.tt.circle.app.widget.CircleImageView
+            android:id="@+id/item_imageview_author_pic"
+            android:layout_width="42dip"
+            android:layout_height="42dip"
+            android:layout_below="@id/item_imageview_cover_pic"
+            android:layout_margin="5dip"
+            android:src="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dip"
+            android:layout_below="@id/item_imageview_cover_pic"
+            android:layout_margin="5dip"
+            android:layout_toRightOf="@id/item_imageview_author_pic"
+            android:gravity="center|right"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_textvuew_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingBottom="2dip"
+                android:paddingRight="5dip"
+                android:paddingTop="2dip"
+                android:singleLine="true"
+                android:text="aaaaa"
+                android:textColor="#333333"
+                android:textSize="12sp"/>
+
+            <com.tt.circle.app.widget.TextImageView
+                android:id="@+id/textView_likes_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dip"
+                android:drawablePadding="1dip"
+                android:gravity="center"
+                android:text="3333"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

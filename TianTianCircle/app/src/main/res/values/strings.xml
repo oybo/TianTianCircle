@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">甜甜圈</string>
+
+    <string name="simple_view_behavior">com.tt.circle.app.ui.other.SimpleViewBehavior</string>
+    <string name="translate_up_down_behavior">com.tt.circle.app.ui.other.TranslateUpDownBehavior</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="text_load_in">加载中...</string>
+    <string name="text_empty">还没有数据呢！</string>
+    <string name="text_retry">获取数据失败，点击重试！</string>
+
+    <string name="msg_no_more_data">没有更多数据...</string>
+    <string name="msg_waitting_loding">请等待，当前正在加载...</string>
+
+</resources>
