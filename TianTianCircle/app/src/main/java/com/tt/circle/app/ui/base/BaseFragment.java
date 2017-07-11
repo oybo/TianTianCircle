@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 import com.tt.circle.app.R;
+import com.tt.circle.app.utils.ToastUtils;
 import com.tt.circle.app.widget.LoadingView;
+
 import butterknife.ButterKnife;
 
 /**
@@ -59,7 +61,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void retryLoad();
 
     protected void showToast(String message) {
-        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShortSafe(message);
     }
 
     protected abstract int getLayoutResource();

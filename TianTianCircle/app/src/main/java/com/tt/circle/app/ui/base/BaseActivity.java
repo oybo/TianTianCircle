@@ -1,6 +1,5 @@
 package com.tt.circle.app.ui.base;
 
-import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,11 +12,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.tt.circle.app.R;
 import com.tt.circle.app.manager.ImageLoadManager;
 import com.tt.circle.app.utils.SystemBarUtil;
+import com.tt.circle.app.utils.ToastUtils;
 import com.tt.circle.app.widget.SolidToast;
 
 import butterknife.ButterKnife;
@@ -127,25 +126,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    private ProgressDialog dialog;
-
-    public void showLoading() {
-        if (dialog != null && dialog.isShowing()) return;
-        dialog = new ProgressDialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage("请求网络中...");
-        dialog.show();
-    }
-
-    public void dismissLoading() {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
-        }
+        ToastUtils.showShortSafe(message);
     }
 
     public void displayImage(String url, ImageView imageView) {

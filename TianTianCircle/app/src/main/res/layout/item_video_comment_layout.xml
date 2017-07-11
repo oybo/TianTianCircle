@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="2dp"
+    android:clickable="true"
+    android:descendantFocusability="blocksDescendants"
+    android:elevation="5dp"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    app:cardCornerRadius="1dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp">
+
+        <com.tt.circle.app.widget.CircleImageView
+            android:id="@+id/item_media_detail_comment_head_image"
+            android:layout_width="45dip"
+            android:layout_height="45dip"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/item_media_detail_comment_name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="2dip"
+            android:layout_toRightOf="@id/item_media_detail_comment_head_image"
+            android:text="张三丰"
+            android:textColor="#111111"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/item_media_detail_comment_date_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_media_detail_comment_name_txt"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip"
+            android:layout_toRightOf="@id/item_media_detail_comment_head_image"
+            android:text="12点"
+            android:textColor="#333333"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/item_media_detail_comment_content_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_media_detail_comment_head_image"
+            android:layout_margin="10dip"
+            android:maxLines="2"
+            android:text="内容sss内容sssssssssssssssssssssss内容sssssssssssssssssssssss内容sssssssssssssssssssssssssssssssssssssssssss"
+            android:textColor="#111111"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

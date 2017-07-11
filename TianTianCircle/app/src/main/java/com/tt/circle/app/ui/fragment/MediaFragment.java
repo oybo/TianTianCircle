@@ -1,6 +1,5 @@
 package com.tt.circle.app.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -75,15 +74,13 @@ public class MediaFragment extends RefreshAndLoadFragment implements MediaContra
             @Override
             public void onItemClick(View itemView, int pos) {
                 // 跳转到详情页
-                Intent intent = new Intent(getActivity(), MediaDetailActivity.class);
-                intent.putExtra("mediaEntity", mAdapter.getItem(pos));
-                startActivity(intent);
+                startActivity(MediaDetailActivity.createIntent(getActivity(), mAdapter.getItem(pos)));
             }
         });
     }
 
     @Override
-    public void showError() {
+    public void showError(String message) {
         currentState = 0;
         if (getSwipeRefreshWidget().isRefreshing()) {
             getSwipeRefreshWidget().setRefreshing(false);

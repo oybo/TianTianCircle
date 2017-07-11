@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 import com.tt.circle.app.R;
 import com.tt.circle.app.adapter.FragmentAdapter;
@@ -15,6 +14,8 @@ import com.tt.circle.app.entity.CategoryEntity;
 import com.tt.circle.app.mvp.category.CategoryContract;
 import com.tt.circle.app.mvp.category.CategoryPresenter;
 import com.tt.circle.app.ui.base.BaseActivity;
+import com.tt.circle.app.utils.ToastUtils;
+
 import butterknife.Bind;
 
 public class MainActivity extends BaseActivity implements CategoryContract.View {
@@ -69,7 +70,7 @@ public class MainActivity extends BaseActivity implements CategoryContract.View 
 
     @Override
     public void showError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShortSafe(message);
     }
 
     @Override
