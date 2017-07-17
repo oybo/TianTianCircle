@@ -20,6 +20,8 @@ public class CommentEntity {
 
     private int liked_count;
 
+    private SimpleUserEntity user;
+
     public void setId(int id) {
         this.id = id;
     }
@@ -68,4 +70,11 @@ public class CommentEntity {
         return this.liked_count;
     }
 
+    public SimpleUserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(SimpleUserEntity user) {
+        this.user = user;
+    }
 }

@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import com.bumptech.glide.Glide;
+
 import com.tt.circle.app.R;
 import com.tt.circle.app.adapter.CommentsAdapter;
 import com.tt.circle.app.entity.CommentEntity;
@@ -25,11 +25,14 @@ import com.tt.circle.app.widget.BlingTextView;
 import com.tt.circle.app.widget.CircleImageView;
 import com.tt.circle.app.widget.TextImageView;
 import com.tt.circle.app.widget.floatingactionbutton.FloatingActionsMenu;
+import com.tt.circle.app.widget.refresh.BaseLoadMoreRecyclerAdapter;
 import com.tt.circle.app.widget.refresh.OnRecycleViewScrollListener;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
+
 import java.util.List;
+
 import butterknife.Bind;
 
 /**
@@ -71,6 +74,7 @@ public class MediaDetailActivity extends BaseActivity implements MediaContract.M
     @Override
     protected void init(Bundle savedInstanceState) {
 
+        setStatusTransparent();
         initView();
         initData();
     }
@@ -89,6 +93,13 @@ public class MediaDetailActivity extends BaseActivity implements MediaContract.M
         mPresenter.loadMediaDetail(mVideoId);
         // 获取评论
         mPresenter.refreshComment(mVideoId);
+
+        mAdapter.setOnInViewClickListener(R.id.item_media_detail_comment_link_layout, new BaseLoadMoreRecyclerAdapter.onInternalClickListener() {
+            @Override
+            public void OnClickListener(View parentV, View v, Integer position) {
+                showToast("点赞");
+            }
+        });
     }
 
     private void setMediaDetailData(MediaEntity mediaEntity) {
@@ -109,11 +120,25 @@ public class MediaDetailActivity extends BaseActivity implements MediaContract.M
         mRecyclerView.addOnScrollListener(new OnRecycleViewScrollListener() {
             @Override
             public void onLoadMore() {
-                mAdapter.setHasFooter(true);
-                mPresenter.loadMediasComment(mVideoId, current_comment_page);
-                mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+                try {
+                    mAdapter.setHasFooter(true);
+                    mPresenter.loadMediasComment(mVideoId, current_comment_page);
+                    mRecyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+//                if(mFloatingMenu.issh)
+            }
+        });
+
+//        mFloatingMenu.setic
 
         mHeadImage.setOnClickListener(listener);
     }
@@ -161,11 +186,7 @@ public class MediaDetailActivity extends BaseActivity implements MediaContract.M
         TxVideoPlayerController controller = new TxVideoPlayerController(this);
         controller.setTitle(mediaEntity.getCaption());
         controller.setLenght(mediaEntity.getTime() * 1000);
-        Glide.with(this)
-                .load(mediaEntity.getCover_pic())
-                .placeholder(R.drawable.img_default)
-                .crossFade()
-                .into(controller.imageView());
+        ImageLoadManager.setImage(mediaEntity.getCover_pic(), controller.imageView());
         mNiceVideoPlayer.setController(controller);
     }
 

@@ -51,7 +51,33 @@
             android:textColor="#333333"
             android:textSize="11sp"/>
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/item_media_detail_comment_link_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/item_media_detail_comment_link_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_thumb_up_gray_18dp"/>
+
+            <TextView
+                android:id="@+id/item_media_detail_comment_liked_count_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/half_black"
+                android:text="赞"/>
+
+        </LinearLayout>
+
+        <com.tt.circle.app.widget.comment.CommentTextView
             android:id="@+id/item_media_detail_comment_content_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

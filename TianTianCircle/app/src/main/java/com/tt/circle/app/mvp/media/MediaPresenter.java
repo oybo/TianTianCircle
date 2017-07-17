@@ -95,7 +95,7 @@ public class MediaPresenter implements MediaContract.Presenter {
                     //延时一秒
                     delay = DEF_DELAY;
                 }
-                updateCommentView(list, delay, FRIST_PAGE);
+                updateCommentView(list, delay, page);
             }
 
             @Override
